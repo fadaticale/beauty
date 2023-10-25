@@ -1,6 +1,3 @@
-// Import the necessary Three.js components
-import * as THREE from 'https://cdn.skypack.dev/three@0.130.1';
-
 // Define the initScene function
 function initScene() {
     // Create a scene, camera, and renderer
