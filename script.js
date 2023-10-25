@@ -33,3 +33,4 @@ export function initScene() {
         renderer.render(scene, camera);
     }
 }
+
