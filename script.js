@@ -1,32 +1,36 @@
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+// Import the necessary Three.js components
+import * as THREE from 'https://cdn.skypack.dev/three@0.130.1';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.130.1/examples/js/loaders/GLTFLoader.js';
 
-// Create a GLTF loader
-let loader = new THREE.GLTFLoader();
+// Define and export the initScene function
+export function initScene() {
+    // Create a scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-// Load your 3D model
-loader.load(
-  'file:///C:/Users/jdog2/Documents/earth/scene.gltf',  // Replace with the path to your GLTF file
-  (gltf) => {
-    // Add the loaded model to the scene
-    scene.add(gltf.scene);
-    animate();  // Call your animate function if you have one
-  },
-  (xhr) => {
-    // Optional: Include a function to report loading progress
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-  },
-  (error) => {
-    // Include an error callback function to handle errors
-    console.error('An error happened', error);
-  }
-);
+    // Load a 3D model using the GLTFLoader
+    const loader = new GLTFLoader();
+    loader.load(
+        'file:///C:/Users/jdog2/Downloads/beauty/scene.gltf',  // Replace with the path to your GLTF model
+        (gltf) => {
+            scene.add(gltf.scene);  // Add the loaded model to the scene
+            animate();  // Call the animate function
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');  // Optional: Log loading progress
+        },
+        (error) => {
+            console.error('An error happened:', error);  // Log any errors that occur
+        }
+    );
 
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
+    // Define the animate function
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
 }
-animate();
+
