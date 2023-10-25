@@ -10,7 +10,7 @@ function initScene() {
     // Load a 3D model using the GLTFLoader
     const loader = new THREE.GLTFLoader();
     loader.load(
-        'file:///C:/Users/jdog2/Downloads/beauty/scene.gltf',  // Replace with the path to your GLTF model
+        'https://github.com/fadaticale/beauty/blob/main/scene.gltf',  // Replace with the path to your GLTF model
         (gltf) => {
             scene.add(gltf.scene);  // Add the loaded model to the scene
             animate();  // Call the animate function
