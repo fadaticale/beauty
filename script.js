@@ -1,6 +1,6 @@
 // Import the necessary Three.js components
 import * as THREE from 'https://cdn.skypack.dev/three@0.130.1';
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.130.1/examples/js/loaders/GLTFLoader.js';
+import GLTFLoader from 'https://cdn.skypack.dev/three-gltf-loader';
 
 // Define and export the initScene function
 export function initScene() {
@@ -33,4 +33,3 @@ export function initScene() {
         renderer.render(scene, camera);
     }
 }
-
